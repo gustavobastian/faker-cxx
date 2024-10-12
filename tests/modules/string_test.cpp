@@ -124,6 +124,35 @@ TEST_F(StringTest, shouldGenerateUuid4)
     ASSERT_EQ(generatedUuid[23], '-');
 }
 
+TEST_F(StringTest, ShouldGenerateSymbolStringDefault)
+{
+    const auto generatedSymbol = symbol();
+
+    ASSERT_TRUE(!generatedSymbol.empty() && generatedSymbol.size() <= 10);
+
+    ASSERT_TRUE(std::all_of(generatedSymbol.begin(), generatedSymbol.end(),
+                            [](char c) { return symbolCharacters.find(c) != std::string::npos; }));
+}
+
+TEST_F(StringTest, ShouldGenerateSymbolStringWithRange)
+{
+    const auto minLength = 10;
+
+    const auto maxLength = 20;
+
+    const auto generatedSymbols = symbol(minLength, maxLength);
+
+    ASSERT_TRUE(std::all_of(generatedSymbols.begin(), generatedSymbols.end(),
+                            [](char c) { return symbolCharacters.find(c) != std::string::npos; }));
+
+    ASSERT_TRUE(generatedSymbols.size() >= minLength && generatedSymbols.size() <= maxLength);
+}
+
+TEST_F(StringTest, ShouldThrowExceptionForInvalidRange)
+{
+    ASSERT_THROW(symbol(20, 10), std::invalid_argument);
+}
+
 TEST_F(StringTest, shouldGenerateDefaultSampleString)
 {
     const auto generatedSample = sample();

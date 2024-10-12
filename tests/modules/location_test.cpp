@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -11,6 +12,10 @@
 #include "location_data.h"
 #include "person_data.h"
 #include "string_data.h"
+
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 using namespace ::testing;
 using namespace faker;
@@ -69,6 +74,8 @@ CountryAddressesInfo getAddresses(const Locale& locale)
         return estoniaAddresses;
     case Locale::en_GB:
         return unitedkingdomAddresses;
+    case Locale::sk_SK:
+        return slovakiaAddresses;
     default:
         return usaAddresses;
     }
@@ -119,6 +126,23 @@ public:
     {
         return std::ranges::any_of(string::numericCharacters,
                                    [character](char numericCharacter) { return numericCharacter == character; });
+    }
+
+    static constexpr double EARTH_RADIUS_KM = 6371.0;
+
+    static double haversine(double lat1, double lon1, double lat2, double lon2)
+    {
+        auto toRadians = [](double degree) -> double { return degree * M_PI / 180.0; };
+
+        const double dLat = toRadians(lat2 - lat1);
+        const double dLon = toRadians(lon2 - lon1);
+
+        lat1 = toRadians(lat1);
+        lat2 = toRadians(lat2);
+
+        const double a =
+            std::pow(std::sin(dLat / 2), 2) + std::pow(std::sin(dLon / 2), 2) * std::cos(lat1) * std::cos(lat2);
+        return 2 * EARTH_RADIUS_KM * std::atan2(std::sqrt(a), std::sqrt(1 - a));
     }
 };
 
@@ -180,11 +204,13 @@ TEST_P(LocationTest, shouldGenerateZipCode)
 
     ASSERT_EQ(generatedZipCode.size(), countryAddresses.zipCodeFormat.size());
 
-    if(postCodeSet.count(country) == 1){
+    if (postCodeSet.count(country) == 1)
+    {
 
         ASSERT_TRUE(checkIfPostCode(generatedZipCode));
     }
-    else{
+    else
+    {
 
         ASSERT_TRUE(checkIfZipCode(generatedZipCode));
     }
@@ -505,6 +531,79 @@ TEST_F(LocationTest, shouldGenerateLongitudeWithSpecifiedPrecision)
     ASSERT_LE(longitudeAsFloat, 180);
 }
 
+TEST_F(LocationTest, shouldGenerateNearbyGPSCoordinateWithoutOrigin)
+{
+    const auto generatedNearbyGPSCoordinate = nearbyGPSCoordinate();
+
+    auto offset = std::get<0>(generatedNearbyGPSCoordinate).size();
+    const auto latitudeAsFloat = std::stof(std::get<0>(generatedNearbyGPSCoordinate), &offset);
+
+    offset = std::get<1>(generatedNearbyGPSCoordinate).size();
+    const auto longitudeAsFloat = std::stof(std::get<1>(generatedNearbyGPSCoordinate), &offset);
+
+    const auto generatedLatitudeParts = common::split(std::get<0>(generatedNearbyGPSCoordinate), ".");
+    const auto generatedLongitudeParts = common::split(std::get<1>(generatedNearbyGPSCoordinate), ".");
+
+    ASSERT_EQ(generatedLatitudeParts.size(), 2);
+    ASSERT_EQ(generatedLatitudeParts[1].size(), 4);
+    ASSERT_GE(latitudeAsFloat, -90);
+    ASSERT_LE(latitudeAsFloat, 90);
+
+    ASSERT_EQ(generatedLongitudeParts.size(), 2);
+    ASSERT_EQ(generatedLongitudeParts[1].size(), 4);
+    ASSERT_GE(longitudeAsFloat, -180);
+    ASSERT_LE(longitudeAsFloat, 180);
+}
+
+TEST_F(LocationTest, shouldGenerateNearbyGPSCoordinateWithOriginInKilometers)
+{
+    constexpr std::tuple origin{0, 0};
+    const auto generatedNearbyGPSCoordinate = nearbyGPSCoordinate(Precision::ThreeDp, origin, 10, true);
+
+    auto offset = std::get<0>(generatedNearbyGPSCoordinate).size();
+    const auto latitudeAsFloat = std::stod(std::get<0>(generatedNearbyGPSCoordinate), &offset);
+
+    offset = std::get<1>(generatedNearbyGPSCoordinate).size();
+    const auto longitudeAsFloat = std::stod(std::get<1>(generatedNearbyGPSCoordinate), &offset);
+
+    const auto generatedLatitudeParts = common::split(std::get<0>(generatedNearbyGPSCoordinate), ".");
+    const auto generatedLongitudeParts = common::split(std::get<1>(generatedNearbyGPSCoordinate), ".");
+
+    ASSERT_EQ(generatedLatitudeParts.size(), 2);
+    ASSERT_EQ(generatedLatitudeParts[1].size(), 3);
+    ASSERT_EQ(generatedLongitudeParts.size(), 2);
+    ASSERT_EQ(generatedLongitudeParts[1].size(), 3);
+
+    const auto distance = haversine(std::get<0>(origin), std::get<1>(origin), latitudeAsFloat, longitudeAsFloat);
+
+    ASSERT_LE(distance, 10.0);
+}
+
+TEST_F(LocationTest, shouldGenerateNearbyGPSCoordinateWithOriginInMiles)
+{
+    constexpr std::tuple origin{0, 0};
+    const auto generatedNearbyGPSCoordinate = nearbyGPSCoordinate(Precision::ThreeDp, origin, 10, false);
+
+    auto offset = std::get<0>(generatedNearbyGPSCoordinate).size();
+    const auto latitudeAsFloat = std::stod(std::get<0>(generatedNearbyGPSCoordinate), &offset);
+
+    offset = std::get<1>(generatedNearbyGPSCoordinate).size();
+    const auto longitudeAsFloat = std::stod(std::get<1>(generatedNearbyGPSCoordinate), &offset);
+
+    const auto generatedLatitudeParts = common::split(std::get<0>(generatedNearbyGPSCoordinate), ".");
+    const auto generatedLongitudeParts = common::split(std::get<1>(generatedNearbyGPSCoordinate), ".");
+
+    ASSERT_EQ(generatedLatitudeParts.size(), 2);
+    ASSERT_EQ(generatedLatitudeParts[1].size(), 3);
+    ASSERT_EQ(generatedLongitudeParts.size(), 2);
+    ASSERT_EQ(generatedLongitudeParts[1].size(), 3);
+
+    const auto distanceKm = haversine(std::get<0>(origin), std::get<1>(origin), latitudeAsFloat, longitudeAsFloat);
+    const auto distanceMiles = distanceKm * 0.621371;
+
+    ASSERT_LE(distanceMiles, 10.0);
+}
+
 TEST_F(LocationTest, shouldGenerateDirection)
 {
     const auto generatedDirection = direction();
@@ -820,6 +919,7 @@ TEST_F(LocationTest, shouldGenerateEstoniaStreetAddress)
     ASSERT_TRUE(std::ranges::any_of(estoniaStreetNames, [&generatedStreetAddress](const std::string_view& streetName)
                                     { return generatedStreetAddress.find(streetName) != std::string::npos; }));
 }
+
 TEST_F(LocationTest, shouldGenerateUnitedKingdomStreet)
 {
     const auto generatedStreet = street(Locale::en_GB);
@@ -839,7 +939,8 @@ TEST_F(LocationTest, shouldGenerateUnitedKingdomStreet)
                 std::ranges::any_of(person::englishLastNames,
                                     [&generatedFirstOrLastName](const std::string_view& lastName)
                                     { return lastName == generatedFirstOrLastName; }));
-    ASSERT_TRUE(std::ranges::any_of(unitedkingdomStreetSuffixes, [&generatedStreetSuffix](const std::string_view& streetSuffix)
+    ASSERT_TRUE(std::ranges::any_of(unitedkingdomStreetSuffixes,
+                                    [&generatedStreetSuffix](const std::string_view& streetSuffix)
                                     { return streetSuffix == generatedStreetSuffix; }));
 }
 
@@ -865,6 +966,48 @@ TEST_F(LocationTest, shouldGenerateUnitedKingdomStreetAddress)
                 std::ranges::any_of(person::englishLastNames,
                                     [&generatedFirstOrLastName](const std::string_view& lastName)
                                     { return lastName == generatedFirstOrLastName; }));
-    ASSERT_TRUE(std::ranges::any_of(unitedkingdomStreetSuffixes, [&generatedStreetSuffix](const std::string_view& streetSuffix)
+    ASSERT_TRUE(std::ranges::any_of(unitedkingdomStreetSuffixes,
+                                    [&generatedStreetSuffix](const std::string_view& streetSuffix)
                                     { return streetSuffix == generatedStreetSuffix; }));
+}
+
+TEST_F(LocationTest, shouldGenerateSlovakiaStreet)
+{
+    const auto generatedStreet = street(Locale::sk_SK);
+
+    ASSERT_TRUE(std::ranges::any_of(slovakiaStreetNames, [&generatedStreet](const std::string_view& street)
+                                    { return generatedStreet.find(street) != std::string::npos; }));
+}
+
+TEST_F(LocationTest, shouldGenerateSlovakiaStreetAddress)
+{
+    const auto generatedStreetAddress = streetAddress(Locale::sk_SK);
+
+    const auto generatedAddresses = common::split(generatedStreetAddress, ", ");
+    const auto generatedStreetAddressElements = common::split(generatedAddresses[0], " ");
+
+    const auto& generatedBuildingNumber = generatedStreetAddressElements[generatedStreetAddressElements.size() - 1];
+    const auto& generatedStreetSuffix = generatedStreetAddressElements[generatedStreetAddressElements.size() - 2];
+    const auto& generatedStreet =
+        common::join({generatedStreetAddressElements.begin(), generatedStreetAddressElements.end() - 2});
+
+    if (generatedAddresses.size() > 1)
+    {
+        const auto& generatedSecondaryAddressParts = common::split(generatedAddresses[1], " ");
+
+        const auto& generatedUnitNumber = generatedSecondaryAddressParts[generatedSecondaryAddressParts.size() - 1];
+
+        ASSERT_TRUE(generatedUnitNumber.size() == 1 || generatedUnitNumber.size() == 3);
+        ASSERT_TRUE(checkIfAllCharactersAreNumeric(generatedUnitNumber));
+    }
+
+    ASSERT_TRUE(!generatedBuildingNumber.empty() && generatedBuildingNumber.size() <= 3);
+    ASSERT_TRUE(checkIfAllCharactersAreNumeric(generatedBuildingNumber));
+
+    ASSERT_TRUE(std::ranges::any_of(slovakiaStreetNames, [&generatedStreet](const std::string_view& streetName)
+                                    { return generatedStreet.find(streetName) != std::string::npos; }));
+
+    ASSERT_TRUE(std::ranges::any_of(slovakiaStreetSuffixes,
+                                    [&generatedStreetSuffix](const std::string_view& streetSuffix)
+                                    { return generatedStreetSuffix.find(streetSuffix) != std::string::npos; }));
 }

@@ -1,11 +1,11 @@
 var searchData=
 [
   ['sample_0',['sample',['../namespacefaker_1_1string.html#a34013d255a8eaf4c2afab2090c15cb8d',1,'faker::string::sample(unsigned length=10)'],['../namespacefaker_1_1string.html#a6613ccca522a49631ed49c7d93c32e85',1,'faker::string::sample(GuaranteeMap &amp;&amp;guarantee, unsigned length=10)'],['../namespacefaker_1_1word.html#a51c7334e1136358467f793304ee60bc1',1,'faker::word::sample()']]],
-  ['seafood_1',['seafood',['../namespacefaker_1_1food.html#a1afd0c7bce41f172f409956650b80401',1,'faker::food']]],
+  ['seafood_1',['seafood',['../namespacefaker_1_1food.html#a2593a33ce19633c96d9498331a8e2db9',1,'faker::food']]],
   ['seat_2',['seat',['../namespacefaker_1_1airline.html#abd4ed31284f90116d7d449776ad57055',1,'faker::airline']]],
   ['second_3',['second',['../namespacefaker_1_1date.html#aea16f01309c7b8134454035b8bf88617',1,'faker::date']]],
   ['secondaryaddress_4',['secondaryAddress',['../namespacefaker_1_1location.html#a3acf868202afaa718b765dd652cde1d7',1,'faker::location']]],
-  ['seed_5',['seed',['../namespacefaker_1_1food.html#a5f50d39d0da2d04f87d1fada468c2682',1,'faker::food']]],
+  ['seed_5',['seed',['../namespacefaker_1_1food.html#ac5615863ab15c90ae855394891a80d0d',1,'faker::food']]],
   ['semver_6',['semver',['../namespacefaker_1_1system.html#a0f4b656749ffa2840fbef78d38d4c254',1,'faker::system']]],
   ['sentence_7',['sentence',['../namespacefaker_1_1lorem.html#a474701bf19dcc2b62a199d540deb96fc',1,'faker::lorem']]],
   ['sentences_8',['sentences',['../namespacefaker_1_1lorem.html#a375063dbea7caebda30aec4a3fd83775',1,'faker::lorem']]],
@@ -18,11 +18,11 @@ var searchData=
   ['slug_15',['slug',['../namespacefaker_1_1lorem.html#a083881e3fc0adfc974bfdb6d09bf8970',1,'faker::lorem']]],
   ['snake_16',['snake',['../namespacefaker_1_1animal.html#a2a04f672b03cb3348215ae80a5893aae',1,'faker::animal']]],
   ['soccerteam_17',['soccerTeam',['../namespacefaker_1_1sport.html#ab7fcd815682ecdab77be63ee8750384d',1,'faker::sport']]],
-  ['songname_18',['songName',['../namespacefaker_1_1music.html#a74c35da84e2a60a833245fb8bffd6c48',1,'faker::music']]],
+  ['songname_18',['songName',['../namespacefaker_1_1music.html#a4aab326e1500b74cf3e1564345c8a027',1,'faker::music']]],
   ['soondate_19',['soonDate',['../namespacefaker_1_1date.html#a66bb0c111599b5ac0162cc36bffe9519',1,'faker::date']]],
   ['sortedsizerandomelement_20',['sortedSizeRandomElement',['../namespacefaker_1_1word.html#ae164b6efba4db33641cfb8eef950dd60',1,'faker::word']]],
   ['space_21',['space',['../namespacefaker_1_1color.html#a9e6fcbbea7873289acd1f8fa87517d08',1,'faker::color']]],
-  ['specialty_22',['specialty',['../namespacefaker_1_1medicine.html#ae3051b9186cd322160e6f6986c70d49d',1,'faker::medicine']]],
+  ['specialty_22',['specialty',['../namespacefaker_1_1medicine.html#ae219e5fc56696b6850a9d7572891c114',1,'faker::medicine']]],
   ['sportevent_23',['sportEvent',['../namespacefaker_1_1sport.html#a2a10678e1b9b26b2f0d31663c6304dfa',1,'faker::sport']]],
   ['sportname_24',['sportName',['../namespacefaker_1_1sport.html#a864b5a6660c93ff2e8babe7de0397d6a',1,'faker::sport']]],
   ['ssn_25',['ssn',['../namespacefaker_1_1person.html#a8e6f181401f124afcead503aa08544da',1,'faker::person']]],
@@ -32,6 +32,6 @@ var searchData=
   ['studioname_29',['studioName',['../namespacefaker_1_1videogame.html#a3c88f81c0dedea1654576cd375331f68',1,'faker::videogame']]],
   ['succulent_30',['succulent',['../namespacefaker_1_1plant.html#a7c68e45162c519ef4eaf951154bbef05',1,'faker::plant']]],
   ['suffix_31',['suffix',['../namespacefaker_1_1person.html#a0e2a416b654fbed4272162da9148cf75',1,'faker::person']]],
-  ['sugarproduct_32',['sugarProduct',['../namespacefaker_1_1food.html#a3b58938e421e79f85126d4ef3b6e4280',1,'faker::food']]],
+  ['sugarproduct_32',['sugarProduct',['../namespacefaker_1_1food.html#aa1884db355e40e79e568f6ec96810ba9',1,'faker::food']]],
   ['symbol_33',['symbol',['../namespacefaker_1_1string.html#a329b6a478487c87eadb19b1f78292264',1,'faker::string']]]
 ];

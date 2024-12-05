@@ -1,13 +1,13 @@
 var searchData=
 [
   ['cat_0',['cat',['../namespacefaker_1_1animal.html#aeb226598d0bb2f1608e6ec3517b91de2',1,'faker::animal']]],
-  ['catchphrase_1',['catchPhrase',['../namespacefaker_1_1company.html#a04a7737b2377799810caba6a6b0311ee',1,'faker::company']]],
-  ['catchphraseadjective_2',['catchPhraseAdjective',['../namespacefaker_1_1company.html#a8a13dd8359d3aa09f1e2d191b2e22b67',1,'faker::company']]],
-  ['catchphrasedescriptor_3',['catchPhraseDescriptor',['../namespacefaker_1_1company.html#a2d7397f6a1cbbae0bc3b3337094ac407',1,'faker::company']]],
-  ['catchphrasenoun_4',['catchPhraseNoun',['../namespacefaker_1_1company.html#a0136b25088ae46b23aefdd19eaebcc64',1,'faker::company']]],
+  ['catchphrase_1',['catchPhrase',['../namespacefaker_1_1company.html#a712c745d2fa7e37396d8fac5dd27ebdd',1,'faker::company']]],
+  ['catchphraseadjective_2',['catchPhraseAdjective',['../namespacefaker_1_1company.html#ad7bd6df98b77206f0bd7019c46034f8b',1,'faker::company']]],
+  ['catchphrasedescriptor_3',['catchPhraseDescriptor',['../namespacefaker_1_1company.html#a7a538b1ccf11d8bacc08d8998a940936',1,'faker::company']]],
+  ['catchphrasenoun_4',['catchPhraseNoun',['../namespacefaker_1_1company.html#a3607193ecdaf059be8a43c56e1445eb6',1,'faker::company']]],
   ['cetacean_5',['cetacean',['../namespacefaker_1_1animal.html#aab334127ba8b60ddce62171e677ad9dd',1,'faker::animal']]],
   ['checkifemojiisvalid_6',['checkIfEmojiIsValid',['../namespacefaker_1_1internet.html#ae1a9eb9071b9843c891c065fd87345e7',1,'faker::internet']]],
-  ['chemicalelement_7',['chemicalElement',['../namespacefaker_1_1science.html#a757668dd0208c494fc9136bd46c6aa23',1,'faker::science']]],
+  ['chemicalelement_7',['chemicalElement',['../namespacefaker_1_1science.html#aecb672b5154845ee493a7099e3388d71',1,'faker::science']]],
   ['chinesezodiac_8',['chineseZodiac',['../namespacefaker_1_1person.html#a4b696b7118429e5550b9664e6eb4c4a8',1,'faker::person']]],
   ['city_9',['city',['../namespacefaker_1_1location.html#af8cdcef7f184ffa39612b92ff51cf5c1',1,'faker::location']]],
   ['cmyk_10',['cmyk',['../namespacefaker_1_1color.html#a029e95b2d93b04c1b07ecf8e1942f690',1,'faker::color']]],
@@ -21,8 +21,8 @@ var searchData=
   ['commitsha_18',['commitSha',['../namespacefaker_1_1git.html#a436a7fdcdcca81c208bbca7da97af168',1,'faker::git']]],
   ['commonfileextension_19',['commonFileExtension',['../namespacefaker_1_1system.html#a74d7b69a1a18ae8958c29271e1f230a2',1,'faker::system']]],
   ['commonfilename_20',['commonFileName',['../namespacefaker_1_1system.html#a8d4f85025e597462298395ce1423a24f',1,'faker::system']]],
-  ['companyname_21',['companyName',['../namespacefaker_1_1company.html#a7748ea0d17db38963f0e9e807e2bc556',1,'faker::company']]],
-  ['condition_22',['condition',['../namespacefaker_1_1medicine.html#add3e653f246cc4dc44639728f84260f4',1,'faker::medicine']]],
+  ['companyname_21',['companyName',['../namespacefaker_1_1company.html#ab366e1ca4cb6156a379e5b3917f48a4f',1,'faker::company']]],
+  ['condition_22',['condition',['../namespacefaker_1_1medicine.html#a7287f988588f2006d0bfe8b2079ebba3',1,'faker::medicine']]],
   ['conjunction_23',['conjunction',['../namespacefaker_1_1word.html#a2f0d90f4d3308ed0f034e67c9668ba82',1,'faker::word']]],
   ['continent_24',['continent',['../namespacefaker_1_1location.html#ac785189329cae536c5f052606a5ae8d0',1,'faker::location']]],
   ['country_25',['country',['../namespacefaker_1_1location.html#abf141f8017e0b97eafedb1c0e2c1037a',1,'faker::location']]],
@@ -42,5 +42,5 @@ var searchData=
   ['currencycode_39',['currencyCode',['../namespacefaker_1_1finance.html#a8556f59f5be1b90fdcd8d08cb999f827',1,'faker::finance']]],
   ['currencyname_40',['currencyName',['../namespacefaker_1_1finance.html#a6daf7688d136068b71d34ccb792b00bf',1,'faker::finance']]],
   ['currencysymbol_41',['currencySymbol',['../namespacefaker_1_1finance.html#afa74fcebfd397842d3beb0b18620ec39',1,'faker::finance']]],
-  ['currentunit_42',['currentUnit',['../namespacefaker_1_1science.html#af4d5df3993f6749a148253bbc7e82d91',1,'faker::science']]]
+  ['currentunit_42',['currentUnit',['../namespacefaker_1_1science.html#a48964c38630eb4352d549a359b55600c',1,'faker::science']]]
 ];

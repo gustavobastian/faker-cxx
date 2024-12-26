@@ -10,7 +10,7 @@ include(CMakeDependentOption)
 
 option(USE_SYSTEM_DEPENDENCIES "Use fmt and GTest from system" OFF)
 option(BUILD_EXAMPLES "Build examples" OFF)
-option(BUILD_TESTING "Build tests" ON)
+option(BUILD_TESTING "Build tests" OFF)
 option(CODE_COVERAGE "Build faker-cxx with coverage support" OFF)
 
 SET(CMAKE_EXPORT_COMPILE_COMMANDS ON)

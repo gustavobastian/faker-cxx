@@ -204,6 +204,7 @@ var namespacefaker =
       [ "direction", "namespacefaker_1_1location.html#ad7add8bde67bede1c36d3834cb7fc463", null ],
       [ "latitude", "namespacefaker_1_1location.html#a6f11c5eeb8a4a61c0bb36cc98fe93e06", null ],
       [ "longitude", "namespacefaker_1_1location.html#a516e1c44a2c518d20eac0f95b664b04c", null ],
+      [ "mgrs", "namespacefaker_1_1location.html#afa3ad6b83d26cb95ded4aeb06c57dd2a", null ],
       [ "nearbyGPSCoordinate", "namespacefaker_1_1location.html#aec3a748ec5f78c07a12ff697eaecf8c4", null ],
       [ "ordinalDirection", "namespacefaker_1_1location.html#a8a6374d3d363f04b4fad4f12b5441344", null ],
       [ "secondaryAddress", "namespacefaker_1_1location.html#a3acf868202afaa718b765dd652cde1d7", null ],
@@ -246,9 +247,10 @@ var namespacefaker =
       [ "binary", "namespacefaker_1_1number.html#a46669288c05a8291ecc61c658cb39014", null ],
       [ "hexadecimal", "namespacefaker_1_1number.html#a2ef57e38b2dc94b0f6d7c87adb46eb2f", null ],
       [ "hexadecimal", "namespacefaker_1_1number.html#a9f199def6ac23945c838141f17888192", null ],
-      [ "integer", "namespacefaker_1_1number.html#afc3ffd60474194ebb9de6c1fadbd6a6e", null ],
-      [ "integer", "namespacefaker_1_1number.html#a56e8f02c1fc4e0b18f9d55901a31d659", null ],
-      [ "octal", "namespacefaker_1_1number.html#a43a34f62099d7c2015b5d6b3553a07f8", null ]
+      [ "integer", "namespacefaker_1_1number.html#af07bf933e9e291a8aec4fcd56db06dad", null ],
+      [ "integer", "namespacefaker_1_1number.html#a8e680dc564d30755ca22fa708f5277a0", null ],
+      [ "octal", "namespacefaker_1_1number.html#a43a34f62099d7c2015b5d6b3553a07f8", null ],
+      [ "roman", "namespacefaker_1_1number.html#af59343cb947e88e33abe25c02acb93d3", null ]
     ] ],
     [ "person", "namespacefaker_1_1person.html", [
       [ "Sex", "namespacefaker_1_1person.html#ab7290e4523427c5876299e459d3ed038", [
@@ -578,5 +580,8 @@ var namespacefaker =
       [ "verb", "namespacefaker_1_1word.html#a58d7708484c4835c26787568751c4348", null ],
       [ "words", "namespacefaker_1_1word.html#a1067a300a72dce4146f3c36fe7f78743", null ]
     ] ],
-    [ "RandomGenerator", "classfaker_1_1RandomGenerator.html", "classfaker_1_1RandomGenerator" ]
+    [ "RandomGenerator", "classfaker_1_1RandomGenerator.html", "classfaker_1_1RandomGenerator" ],
+    [ "getGenerator", "namespacefaker.html#a0a85e419f14197422d14c1bdbb404e3b", null ],
+    [ "setSeed", "namespacefaker.html#a7a8c3ab03cf4c3cc0a5145e8210ed228", null ],
+    [ "setSeed", "namespacefaker.html#a1203f3f9172c5de2480cf9ace4b65376", null ]
 ];
